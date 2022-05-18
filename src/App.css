@@ -28,6 +28,48 @@
   color: #61dafb;
 }
 
+.searchTitle{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+.select_type{
+  width: 95%;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-left: 5px;
+  background-color: darkslategray;
+}
+
+.select_facility{
+  width: 95%;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-left: 5px;
+}
+
+.post{
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.picture{
+  width:150px;
+  height: 90px;
+  float: left;
+  object-fit: cover;
+  margin-right: 5px;
+}
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
