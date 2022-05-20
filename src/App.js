@@ -1,29 +1,46 @@
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Navbar, Button, Container, ToggleButtonGroup, ToggleButton, Row, Form, Col, Image } from 'react-bootstrap';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, BrowserRouter as Router} from 'react-router-dom';
 import Detail from './Detail.js';
+import { signIn } from './auth';
+import AuthRoute from './AuthRoute';
 
+import Profile from './Profile';
+import LoginForm from './LoginForm';
+import LogoutButton from './LogoutButton';
 
 function App() {
+  const [user, setUser] = useState(null);
+  const authenticated = user != null;
 
+  const login = ({id, password }) => setUser(signIn({ id, password }));
+  const logout = () => setUser(null);
   
 
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
               alt=""
               src="logo.png"
-              width="30"
-              height="30"
+              width="35"
+              height="35"
               className="d-inline-block align-top"
             />{' '}
             MOOD
           </Navbar.Brand>
-          <Button variant="outline-success">로그인</Button>
+          {authenticated? (
+            <LogoutButton logout = {logout} />
+          ): (
+          <Link to="/login"> 
+            <Button className="LoginButton" variant="outline-success">로그인</Button>
+          </Link> 
+          )}
+          
         </Container>
       </Navbar>
       <Route exact path="/">
@@ -89,6 +106,12 @@ function App() {
       <Route path="/detail">
         <Detail/>
       </Route>
+      
+      <Route path="/login"
+        render={props => (
+          <LoginForm authenticated = { authenticated } login = { login } { ...props } />
+        )}
+      />
       
 
 

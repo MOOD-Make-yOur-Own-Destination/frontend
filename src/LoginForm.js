@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
+import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 
-function LoingForm({ authenticated, login, Location }){
+function LoginForm({ authenticated, login, location }){
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
 
@@ -18,22 +19,33 @@ function LoingForm({ authenticated, login, Location }){
     if (authenticated) return <Redirect to={from} />;
 
     return (
-        <>
+        <div className="loginform">
             <h1>Login</h1>
-            <input
-                value = {id}
-                onChange={( { target: { value } }) => setId(value)}
-                type="text"
-                placeholder="ID"
-            />
-            <input
-                value={password}
-                onChange={({ target: {value} }) => setPassword(value)}
-                type="password"
-                placeholder="password"
-            />
-            <button onClick={handleClick}>Login</button>
-        </>
+            <div>
+                <Container className="panel">
+                    <Form>
+                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                            <Col sm>
+                                <Form.Control type="text" placeholder="UserID" value = {id} onChange = {( {target: {value} }) => setId(value)}/>
+                            </Col>
+                        </Form.Group>
+
+                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                            <Col sm>
+                                <Form.Control type="password" placeholder="Password" value = {password} onChange = {( {target: {value} }) => setPassword(value)}/>
+                            </Col>
+                        </Form.Group>
+                        <br/>
+
+                        <div className="d-grid gap-1">
+                            <Button variant="secondary" type="submit" onClick={handleClick}>
+                                Sign In
+                            </Button>
+                        </div>
+                    </Form>
+                </Container>
+            </div>
+        </div>
     );
     
 }
