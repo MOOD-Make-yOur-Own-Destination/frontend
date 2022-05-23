@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function Detail(){
 
@@ -17,7 +18,9 @@ function Detail(){
                     <h4 className="pt-5">호텔명</h4>
                     <p>호텔 위치</p>
                     <p>호텔 별점</p>
-                    <button className="btn btn-danger">예약 페이지로 이동</button>
+                    <Link to={{ pathname: "https://www.naver.com" }} target="_blank">
+                        <button className="btn btn-danger">예약 페이지로 이동</button>
+                    </Link>
                     <button className="btn btn-danger" onClick={ () => { history.goBack(); }}>뒤로 가기</button>
                 </div>
             </div>
