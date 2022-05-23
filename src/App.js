@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import { Navbar, Button, Container, ToggleButtonGroup, ToggleButton, Row, Form, Col, Image, ButtonGroup } from 'react-bootstrap';
 import { Link, Route, Switch, BrowserRouter as Router} from 'react-router-dom';
@@ -17,6 +17,7 @@ import Tendency from './Tendency';
 function App() {
   const [user, setUser] = useState(null);
   const authenticated = user != null;
+  
 
   const login = ({id, password }) => setUser(signIn({ id, password }));
   const logout = () => setUser(null);
