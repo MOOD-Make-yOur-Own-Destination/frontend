@@ -12,7 +12,7 @@ function Tendency(){
             </div>
 
             <div className="tendencylist">
-                <h4>{성향질문[0]}</h4>
+                <h4>{question[0]}</h4>
                 <div>
                 <label for="1">1</label>
                 <input id="1" type="radio" value="one" name="number1"></input>
@@ -32,7 +32,7 @@ function Tendency(){
             </div> 
             
             <div className="tendencylist">
-                <h4>{성향질문[1]}</h4>
+                <h4>{question[1]}</h4>
                 <div>
                 <label for="1">1</label>
                 <input id="1" type="radio" value="one" name="number2"></input>
@@ -51,7 +51,7 @@ function Tendency(){
                 </div>
             </div> 
             <div className="tendencylist">
-                <h4>{성향질문[2]}</h4>
+                <h4>{question[2]}</h4>
                 <div>
                 <label for="1">1</label>
                 <input id="1" type="radio" value="one" name="number3"></input>
