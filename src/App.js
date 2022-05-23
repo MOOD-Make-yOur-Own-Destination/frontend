@@ -25,7 +25,8 @@ function App() {
     <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">
+          <Link to="/" style={{textDecoration: 'none'}}>
+          <Navbar.Brand >
             <img
               alt=""
               src="logo.png"
@@ -35,8 +36,12 @@ function App() {
             />{' '}
             MOOD
           </Navbar.Brand>
+          </Link>
           {authenticated? (
-            <LogoutButton logout = {logout} />
+            <div>
+              <Button className="ProfileButton" variant="outline-success">Profile</Button>
+              <LogoutButton logout = {logout} />
+            </div>
           ): (
           <Link to="/login"> 
             <Button className="LoginButton" variant="outline-success">로그인</Button>

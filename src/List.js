@@ -7,7 +7,7 @@ function List(){
 
     return(
         <div>
-            <Link to='/detail'>
+            <Link to='/detail' style={{textDecoration: 'none', color:'black'}}>
             <div className="post">
                 <hr/>
                 <Image className="picture" src='hotel.jpeg'  />
@@ -15,7 +15,7 @@ function List(){
                 <p>서울시 마포구<br/>4.6/5.0</p>
             </div>
             </Link>
-            <Link to='/detail'>
+            <Link to='/detail' style={{textDecoration: 'none', color:'black'}}>
             <div className="post">
             <hr/>
             <Image className="picture" src='hotel2.jpeg' />
@@ -23,7 +23,7 @@ function List(){
             <p>서울시 서초구<br/>4.5/5.0</p>
             </div>
             </Link>
-            <Link to='/detail'>
+            <Link to='/detail' style={{textDecoration: 'none', color:'black'}}>
             <div className="post">
                 <hr/>
                 <Image className="picture" src='hotel.jpeg' />
