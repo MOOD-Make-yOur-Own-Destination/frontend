@@ -12,6 +12,7 @@ import List from './List';
 import Profile from './Profile';
 import LoginForm from './LoginForm';
 import LogoutButton from './LogoutButton';
+import Tendency from './Tendency';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -39,7 +40,9 @@ function App() {
           </Link>
           {authenticated? (
             <div>
-              <Button className="ProfileButton" variant="outline-success">Profile</Button>
+              <Link to="/test">
+                <Button className="ProfileButton" variant="outline-success">Profile</Button>
+              </Link>
               <LogoutButton logout = {logout} />
             </div>
           ): (
@@ -102,6 +105,9 @@ function App() {
           <LoginForm authenticated = { authenticated } login = { login } { ...props } />
         )}
       />
+      <Route path="/test">
+        <Tendency/>
+      </Route>
       
 
 
