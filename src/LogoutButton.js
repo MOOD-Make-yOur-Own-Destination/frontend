@@ -8,7 +8,7 @@ function LogoutButton({ logout, history })
         logout();
         history.push('/');
     }
-    return <Button className="LogoutButton" variant="outline-success" onClick={handleClick}>로그아웃</Button>
+    return <Button className="LogoutButton" variant="outline-light" onClick={handleClick}>로그아웃</Button>
 }
 
 export default withRouter(LogoutButton);

@@ -1,7 +1,7 @@
 const users = [
-    {"id":"1234","password":"1234","nickname":"mood"},
-    {"id":"12345","password":"12345","nickname":"dddd"},
-    {"id":"mood","password":"11111","nickname":"sang"}
+    {"id":"1234","password":"1234","nickname":"mood", "chk":"0"},
+    {"id":"12345","password":"12345","nickname":"dddd", "chk":"0"},
+    {"id":"mood","password":"11111","nickname":"sang", "chk":"0"}
 ]
 
 export function signIn({id, password})

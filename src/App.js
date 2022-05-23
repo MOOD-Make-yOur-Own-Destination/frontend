@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
-import { Navbar, Button, Container, ToggleButtonGroup, ToggleButton, Row, Form, Col, Image } from 'react-bootstrap';
+import { Navbar, Button, Container, ToggleButtonGroup, ToggleButton, Row, Form, Col, Image, ButtonGroup } from 'react-bootstrap';
 import { Link, Route, Switch, BrowserRouter as Router} from 'react-router-dom';
 import Detail from './Detail.js';
 import { signIn } from './auth';
@@ -17,6 +17,7 @@ import Tendency from './Tendency';
 function App() {
   const [user, setUser] = useState(null);
   const authenticated = user != null;
+  
 
   const login = ({id, password }) => setUser(signIn({ id, password }));
   const logout = () => setUser(null);
@@ -40,21 +41,21 @@ function App() {
           </Link>
           {authenticated? (
             <div>
-              <Link to="/test">
-                <Button className="ProfileButton" variant="outline-success">Profile</Button>
+              <Link to="/profile">
+                <Button className="ProfileButton" variant="outline-light">Profile</Button>
               </Link>
               <LogoutButton logout = {logout} />
             </div>
           ): (
           <Link to="/login"> 
-            <Button className="LoginButton" variant="outline-success">로그인</Button>
+            <Button className="LoginButton" variant="outline-light">로그인</Button>
           </Link> 
           )}
           
         </Container>
       </Navbar>
       <Route exact path="/">          
-        <ToggleButtonGroup type="checkbox" defaultValue={[1]} className="select_type">
+        <ToggleButtonGroup type="checkbox" className="select_type">
           <ToggleButton id="hotel" variant="dark" value={1}>
             호텔
           </ToggleButton>
@@ -69,7 +70,8 @@ function App() {
           </ToggleButton>
         </ToggleButtonGroup>
         <br/>
-        <ToggleButtonGroup type="checkbox" defaultValue={[1]} className="select_facility">
+  
+        <ToggleButtonGroup type="checkbox" className="select_facility">
           <ToggleButton id="wifi" variant="dark" value={1}>
             WiFi
           </ToggleButton>
@@ -108,6 +110,12 @@ function App() {
       <Route path="/test">
         <Tendency/>
       </Route>
+
+      <AuthRoute
+        authenticated={authenticated}
+        path="/profile"
+        render={props => <Profile user={ user } { ...props } />}
+      />
       
 
 

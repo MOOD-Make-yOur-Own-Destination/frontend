@@ -1,16 +1,14 @@
 import React from 'react';
 
 function Profile({ user }) {
-    const {id, password, nickname } = user || {};
+    const {id, nickname} = user || {};
     return (
         <>
-            <h1>Profile</h1>
+            <h1>마이 페이지</h1>
             <dt>ID</dt>
-            <dd>{ id }</dd>
-            <dt>Password</dt>
-            <dd>{ password }</dd>
-            <dt>Nickname</dt>
-            <dd>{ nickname } </dd>
+            <dd>{id}</dd>
+            <dt>닉네임</dt>
+            <dd>{nickname}</dd>
         </>
     );
 }
