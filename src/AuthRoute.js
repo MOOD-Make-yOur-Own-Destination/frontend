@@ -1,8 +1,7 @@
-import { render } from "@testing-library/react";
 import React from "react";
 import { Route, Redirect }  from 'react-router-dom';
 
-function AuthRoute({ authenticated, component: Component, renderm , ...rest })
+function AuthRoute({ authenticated, component: Component, render , ...rest })
 {
     return (
         <Route
