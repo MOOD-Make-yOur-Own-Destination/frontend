@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router';
 import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 
+
 function LoginForm({ authenticated, login, location }){
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
@@ -15,6 +16,7 @@ function LoginForm({ authenticated, login, location }){
              setPassword('');
          }
     };
+
     const { from } = location.state || { from: {pathname: "/" } };
     if (authenticated) return <Redirect to={from} />;
 
@@ -41,6 +43,11 @@ function LoginForm({ authenticated, login, location }){
                             <Button variant="secondary" type="submit" onClick={handleClick}>
                                 Sign In
                             </Button>
+                           
+                            <Button variant="secondary" type="submit" href='/signup'> 
+                                Sign Up
+                            </Button>
+                            
                         </div>
                     </Form>
                 </Container>
