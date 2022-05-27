@@ -13,6 +13,8 @@ import Profile from './Profile';
 import LoginForm from './LoginForm';
 import LogoutButton from './LogoutButton';
 import Tendency from './Tendency';
+import Register from './Register';
+import InitLogin from './InitLogin';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -21,7 +23,7 @@ function App() {
 
   const login = ({id, password }) => setUser(signIn({ id, password }));
   const logout = () => setUser(null);
-  
+  const {id, password, nickname, chk} = user || {};
 
   return (
     <div className="App">
@@ -90,9 +92,11 @@ function App() {
         </Row>
         
         {authenticated? (
-            <List/>
+            chk == 0 
+            ? <Init/>
+            : <List/>
           ): (
-          <Init/>
+          <InitLogin/>
           )}
              
         
@@ -109,6 +113,10 @@ function App() {
       />
       <Route path="/test">
         <Tendency/>
+      </Route>
+
+      <Route path="/signup">
+        <Register/>
       </Route>
 
       <AuthRoute
