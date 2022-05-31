@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button} from 'react-bootstrap';
-
+import { Link } from 'react-router-dom';
+ 
 function Profile({ user }) {
     const {id, nickname} = user || {};
     return (
@@ -10,11 +11,12 @@ function Profile({ user }) {
             <dd>{id}</dd>
             <dt>닉네임</dt>
             <dd>{nickname}</dd>
-            <Link to ='/tendencytest'>
-                <Button variant="secondary" type="submit" href='/tendencytest'> 
-                성향검사 하러가기
-            </Button></Link>
-            
+            <Link to='/test'>
+                <Button variant="secondary" type="submit" > 
+                    성향검사 하러가기
+                </Button>
+            </Link>
+
         </>
     );
 }

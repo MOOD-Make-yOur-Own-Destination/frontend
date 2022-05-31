@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import './App.css';
-import { Navbar, Button, Container, ToggleButtonGroup, ToggleButton, Row, Form, Col, Image, ButtonGroup } from 'react-bootstrap';
+import { Navbar, Button, Container, ToggleButtonGroup, ToggleButton, Row, Form, Col } from 'react-bootstrap';
 import { Link, Route, Switch, BrowserRouter as Router} from 'react-router-dom';
 import Detail from './Detail.js';
 import { signIn } from './auth';
@@ -24,6 +25,7 @@ function App() {
   const login = ({id, password }) => setUser(signIn({ id, password }));
   const logout = () => setUser(null);
   const {id, password, nickname, chk} = user || {};
+  
 
   return (
     <div className="App">
@@ -56,51 +58,66 @@ function App() {
           
         </Container>
       </Navbar>
-      <Route exact path="/">          
-        <ToggleButtonGroup type="checkbox" className="select_type">
-          <ToggleButton id="hotel" variant="dark" value={1}>
-            호텔
-          </ToggleButton>
-          <ToggleButton id="motel" variant="dark" value={2}>
-            모텔
-          </ToggleButton>
-          <ToggleButton id="pension" variant="dark" value={3}>
-            펜션
-          </ToggleButton>
-          <ToggleButton id="guesthouse" variant="dark" value={4}>
-            게스트하우스
-          </ToggleButton>
-        </ToggleButtonGroup>
-        <br/>
-  
-        <ToggleButtonGroup type="checkbox" className="select_facility">
-          <ToggleButton id="wifi" variant="dark" value={1}>
-            WiFi
-          </ToggleButton>
-          <ToggleButton id="breakfast" variant="dark" value={2}>
-            조식제공
-          </ToggleButton>
-          <ToggleButton id="parking" variant="dark" value={3}>
-            주차가능
-          </ToggleButton>
-        </ToggleButtonGroup>
+      <Switch>
+        <Route exact path="/">          
+          <ToggleButtonGroup type="checkbox" className="select_type">
+            <ToggleButton id="hotel" variant="dark" value={1}>
+              호텔
+            </ToggleButton>
+            <ToggleButton id="motel" variant="dark" value={2}>
+              모텔
+            </ToggleButton>
+            <ToggleButton id="pension" variant="dark" value={3}>
+              펜션
+            </ToggleButton>
+            <ToggleButton id="guesthouse" variant="dark" value={4}>
+              게스트하우스
+            </ToggleButton>
+          </ToggleButtonGroup>
+          <br/>
+    
+          <ToggleButtonGroup type="checkbox" className="select_facility">
+            <ToggleButton id="wifi" variant="dark" value={1}>
+              WiFi
+            </ToggleButton>
+            <ToggleButton id="breakfast" variant="dark" value={2}>
+              조식제공
+            </ToggleButton>
+            <ToggleButton id="parking" variant="dark" value={3}>
+              주차가능
+            </ToggleButton>
+          </ToggleButtonGroup>
 
-        <Row className="searchTitle">
-          <Col>
-            <Form.Control type="text" placeholder="검색" />
-          </Col>
-        </Row>
+          <Row className="searchTitle">
+            <Col>
+              <Form.Control type="text" placeholder="검색" />
+            </Col>
+          </Row>
+          
+          
+          {authenticated? (
+              chk == 0 
+              ? <Init/>
+              : <List/>
+            ): (
+            <InitLogin/>
+            )}
+              
+          
+        </Route>
+
+        <Route path="/detail">
+          <Detail/>
+        </Route>
         
-        {authenticated? (
-            chk == 0 
-            ? <Init/>
-            : <List/>
-          ): (
-          <InitLogin/>
+        <Route path="/login"
+          render={props => (
+            <LoginForm authenticated = { authenticated } login = { login } { ...props } />
           )}
-             
-        
-      </Route>
+        />
+        <Route path="/test">
+          <Tendency/>
+        </Route>
 
       <Route path="/detail">
         <Detail/>
@@ -111,7 +128,7 @@ function App() {
           <LoginForm authenticated = { authenticated } login = { login } { ...props } />
         )}
       />
-      <Route path="/tendencytest">
+      <Route path="/test">
         <Tendency/>
       </Route>
 
@@ -124,8 +141,9 @@ function App() {
         path="/profile"
         render={props => <Profile user={ user } { ...props } />}
       />
-      
 
+        
+      </Switch>
 
 
     </div>
