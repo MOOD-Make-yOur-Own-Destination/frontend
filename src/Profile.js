@@ -10,9 +10,11 @@ function Profile({ user }) {
             <dd>{id}</dd>
             <dt>닉네임</dt>
             <dd>{nickname}</dd>
-            <Button variant="secondary" type="submit" href='/test'> 
+            <Link to ='/tendencytest'>
+                <Button variant="secondary" type="submit" href='/tendencytest'> 
                 성향검사 하러가기
-            </Button>
+            </Button></Link>
+            
         </>
     );
 }

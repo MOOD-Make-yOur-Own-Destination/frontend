@@ -111,7 +111,7 @@ function App() {
           <LoginForm authenticated = { authenticated } login = { login } { ...props } />
         )}
       />
-      <Route path="/test">
+      <Route path="/tendencytest">
         <Tendency/>
       </Route>
 

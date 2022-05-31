@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {useState} from 'react'
 
 function Tendency(){
-
+    
     let[question, setQuestion] = useState(['Q1','Q2', 'Q3'])
 
     return(
