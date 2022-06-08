@@ -119,15 +119,29 @@ function App() {
           <Tendency/>
         </Route>
 
-        <Route path="/signup">
-          <Register/>
-        </Route>
+      <Route path="/detail">
+        <Detail/>
+      </Route>
+      
+      <Route path="/login"
+        render={props => (
+          <LoginForm authenticated = { authenticated } login = { login } { ...props } />
+        )}
+      />
+      <Route path="/test">
+        <Tendency/>
+      </Route>
 
-        <AuthRoute
-          authenticated={authenticated}
-          path="/profile"
-          render={props => <Profile user={ user } { ...props } />}
-        />
+      <Route path="/signup">
+        <Register/>
+      </Route>
+
+      <AuthRoute
+        authenticated={authenticated}
+        path="/profile"
+        render={props => <Profile user={ user } { ...props } />}
+      />
+
         
       </Switch>
 

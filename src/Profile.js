@@ -16,6 +16,7 @@ function Profile({ user }) {
                     성향검사 하러가기
                 </Button>
             </Link>
+
         </>
     );
 }

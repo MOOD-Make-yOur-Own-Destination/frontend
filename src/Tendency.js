@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {useState} from 'react';
+import {Button} from 'react-bootstrap';
 
 function Tendency(){
-
+    
     let[question, setQuestion] = useState(['Q1','Q2', 'Q3'])
 
     return(
@@ -70,6 +72,11 @@ function Tendency(){
                 <label class="btn btn-outline-dark" for="q3-5">5</label>
                 </div>
             </div> 
+            <br/>
+            <Button variant="dark">
+                제출
+            </Button>
+            
 
 
     </div>
