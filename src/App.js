@@ -25,7 +25,6 @@ function App() {
   const login = ({id, password }) => setUser(signIn({ id, password }));
   const logout = () => setUser(null);
   const {id, password, nickname, chk} = user || {};
-  
 
   return (
     <div className="App">
@@ -96,7 +95,7 @@ function App() {
           
           
           {authenticated? (
-              chk == 0 
+              chk === 0 
               ? <Init/>
               : <List/>
             ): (
