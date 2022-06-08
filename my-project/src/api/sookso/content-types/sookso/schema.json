@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sooksos",
+  "info": {
+    "singularName": "sookso",
+    "pluralName": "sooksos",
+    "displayName": "sookso"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sookso_name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "sooksos"
+    }
+  }
+}

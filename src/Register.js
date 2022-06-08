@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import { Form, Button, Row, Col, Container } from 'react-bootstrap';
+import axios from "axios";
+import { replace } from 'connected-react-router';
+import { useHistory } from 'react-router-dom';
+
 
 function Register({ authenticated, login, location }){
     const [id, setId] = useState('');
     const [nickname, setNickname] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const {replace} = useHistory();
     
 
     const onIDHandler = (event) => {
@@ -26,6 +31,28 @@ function Register({ authenticated, login, location }){
         if(password !== confirmPassword ){
             return alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.')
         }
+
+        axios
+        .post('http://shbox.shop:3007/user/register', {
+        id: id,
+        password: password,
+        nickname: nickname,
+        })
+        .then((response) => {
+        // Handle success.
+        console.log('Well done!');
+        console.log('User profile', response.data.user);
+        console.log('User token', response.data.jwt);
+        localStorage.setItem('token', response.data.jwt);
+        replace("/");
+        })
+        .catch((error) => {
+        // Handle error.
+       console.log('An error occurred:', error.response);
+        
+        });
+
+        
     }
 
     return (
@@ -58,7 +85,7 @@ function Register({ authenticated, login, location }){
                         <br/>
 
                         <div className="d-grid gap-1">
-                            <Button variant="secondary" type="submit" onSubmit={onSubmit}>
+                            <Button variant="secondary" type="submit" onClick={onSubmit}>
                                 Sign Up
                             </Button>
                         </div>
