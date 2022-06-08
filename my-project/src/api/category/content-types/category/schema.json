@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "Category"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Distribution": {
+      "type": "string"
+    },
+    "sooksos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::sookso.sookso",
+      "inversedBy": "categories"
+    }
+  }
+}
