@@ -1,13 +1,22 @@
-const users = [
-    {"id":"1234","password":"1234","nickname":"mood", "chk":"1"},
-    {"id":"12345","password":"12345","nickname":"dddd", "chk":"0"},
-    {"id":"mood","password":"11111","nickname":"sang", "chk":"0"}
-]
+import axios from "axios";
 
 export function signIn({id, password})
 {
-    const user = users.find(user => user.id === id && user.password === password);
-    if (user === undefined)
-    throw new Error();
+    
+   const user = [] 
+   axios.post('http://shbox.shop:3007/user/login', {
+        id: id,
+        password: password
+    })
+    .then(function(response) {
+        console.log(response.data.code)
+        if (response.data.code == 0)
+            console.log('i wanna go home')
+            console.log(response.data.content)
+            user.push(JSON.stringify(response.data.content)) 
+    })
+    
+    console.log(user)
+    
     return user;
 }

@@ -118,23 +118,6 @@ function App() {
           <Tendency/>
         </Route>
 
-      <Route path="/detail">
-        <Detail/>
-      </Route>
-      
-      <Route path="/login"
-        render={props => (
-          <LoginForm authenticated = { authenticated } login = { login } { ...props } />
-        )}
-      />
-      <Route path="/test">
-        <Tendency/>
-      </Route>
-
-      <Route path="/signup">
-        <Register/>
-      </Route>
-
       <AuthRoute
         authenticated={authenticated}
         path="/profile"
